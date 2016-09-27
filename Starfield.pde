@@ -3,31 +3,40 @@ void setup()
 {
 	size(500,500);
 	bob = new NormalParticle[10];
+	for (int i = 0; i < bob.length; i++)
+	{
+		bob[i] = new NormalParticle();
+	}
 }
 void draw()
 {
-	
+	background(255);
+	for (int i = 0; i < bob.length; i++)
+	{
+		bob[i].show();
+		bob[i].move();
+	}
 }
-class NormalParticle
+class NormalParticle implements Particle
 {
-	double myX, myY, angle, speed;
+	double dX,dY, dSpeed,dTheta;
 	int r, g, b;
-	NormalParticle()
+	NormalParticle() 
 	{
 		dX = 250;
 		dY = 250;
-		dTheta = Math.random()*2Math.PI;
+		dTheta = Math.random()*2*Math.PI;
 		dSpeed = Math.random()*10;
 		r = (int)(Math.random()*100);
 		g = (int)(Math.random()*150);
 		b = (int)(Math.random()*200);
 	}
-	void move()
+	public move()
 	{
 		dX = dX + Math.cos(dTheta)*dSpeed;
 		dY = dY + Math.sin(dTheta)*dSpeed;
 	}
-	void show()
+	 public show()
 	{
 		noStroke();
 		fill(r,g,b);
@@ -36,11 +45,21 @@ class NormalParticle
 }
 interface Particle
 {
-	//your code here
+	public void move();
+	public void show();
 }
-class OddballParticle //uses an interface
+class OddballParticle implements Particle
 {
-	//your code here
+	OddballParticle()
+	{
+
+	}
+	public move(){
+
+	}
+	public show(){
+
+	}
 }
 class JumboParticle //uses inheritance
 {
