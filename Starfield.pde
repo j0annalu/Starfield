@@ -1,28 +1,26 @@
-Particle[] bob;
+Particle[] particles;
 int r, g, b;
 void setup()
 {
 	size(500,500);
-	bob = new NormalParticle[1000];
-	
-	for (int i = 0; i < bob.length; i++)
+	particles = new Particle[1000];
+	for (int i = 0; i < particles.length; i++)
 	{
-		bob[i] = new NormalParticle();
+		particles[i] = new NormalParticle();
 	}
-	bob[0] = new OddballParticle();
+	particles[0] = new OddballParticle();
 }
+
 void draw()
 {
-	bob[0].show();
-	bob[0].move();
 	background(0);
-	for (int i = 0; i < bob.length; i++)
+	for (int i = 0; i < particles.length; i++)
 	{
 		r = (int)(Math.random()*100);
 		g = (int)(Math.random()*150);
 		b = (int)(Math.random()*200);
-		bob[i].show();
-		bob[i].move();
+		particles[i].show();
+		particles[i].move();
 	}
 }
 class NormalParticle implements Particle
@@ -61,29 +59,24 @@ interface Particle
 }
 class OddballParticle implements Particle
 {
-	double oX, oY, oTheta, oR,oG,oB;
+	double oX, oY, oTheta;
 	int oSpeed;
 	OddballParticle()
 	{
-		oX = mouseX;
-		oY = mouseY;
-		oSpeed = (int)(Math.random()*20);
+		oX = 250;
+		oY = 250;
+		oSpeed = (int)(Math.random()*2);
 		oTheta = Math.random()*2*Math.PI;
-		oR = (int)(Math.random()*150)+100;
-		oG = (int)(Math.random()*150)+100;
-		oB= (int)(Math.random()*200)+55;
-	}
+		}
 	public void move(){
+		oTheta = oTheta++;
 		oX = oX + Math.cos(oTheta)*oSpeed;
 		oY = oY + Math.sin(oTheta)*oSpeed;
 	}
 	public void show(){
 		noStroke();
-		fill((float)oR,(float)oG,(float)oB);
-		ellipse((float)oX-5,(float)oY, 10, 10);
-		ellipse((float)oX+5,(float)oY, 10,10);
-		ellipse((float)oX,(float)oY-5,10,10);
-		ellipse((float)oX,(float)oY+5,10,10);
+		fill(255);
+		rect((float)oX,(float)oY, 25,25);
 	}
 }
 class JumboParticle //uses inheritance
