@@ -9,6 +9,7 @@ void setup()
 		particles[i] = new NormalParticle();
 	}
 	particles[0] = new OddballParticle();
+	particles[1] = new JumboParticle();
 }
 
 void draw()
@@ -63,15 +64,15 @@ class OddballParticle implements Particle
 	int oSpeed;
 	OddballParticle()
 	{
-		oX = 250;
-		oY = 250;
-		oSpeed = (int)(Math.random()*2);
+		oX = 250-12.5;
+		oY = 250-12.5;
+		oSpeed = 2;
 		oTheta = Math.random()*2*Math.PI;
 		}
 	public void move(){
-		oTheta = oTheta++;
 		oX = oX + Math.cos(oTheta)*oSpeed;
 		oY = oY + Math.sin(oTheta)*oSpeed;
+		oTheta = oTheta + .025;
 	}
 	public void show(){
 		noStroke();
@@ -79,8 +80,34 @@ class OddballParticle implements Particle
 		rect((float)oX,(float)oY, 25,25);
 	}
 }
-class JumboParticle //uses inheritance
+class JumboParticle implements Particle
 {
-	//your code here
+	double nSpeed, nTheta;
+	int nX,nY;
+	JumboParticle() 
+	{
+		nX = 250;
+		nY = 250;
+		nTheta = Math.random()*2*Math.PI;
+		nSpeed = Math.random()*10;
+	}
+	public void move()
+	{
+			nX = nX + (int)(Math.cos(nTheta)*nSpeed);
+			nY = nY + (int)(Math.sin(nTheta)*nSpeed);	
+		if (nX < 0 || nX > 500 || nY < 0 || nY > 500){
+			nX = 250;
+			nY = 250;
+		}
+	}
+		
+		
+	 public void show ()
+	{
+		r = (int)(Math.random()*255);
+		noStroke();
+		fill(r,0,0);
+		ellipse((float)nX, (float)nY, 50, 50);
+	}
 }
 
