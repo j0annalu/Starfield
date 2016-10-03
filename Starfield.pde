@@ -33,7 +33,7 @@ class NormalParticle implements Particle
 		nX = 250;
 		nY = 250;
 		nTheta = Math.random()*2*Math.PI;
-		nSpeed = Math.random()*10;
+		nSpeed = Math.random()*3;
 	}
 	public void move()
 	{
@@ -104,9 +104,9 @@ class JumboParticle implements Particle
 		
 	 public void show ()
 	{
-		r = (int)(Math.random()*255);
+		g = (int)(Math.random()*255);
 		noStroke();
-		fill(r,0,0);
+		fill(0,g,0);
 		ellipse((float)nX, (float)nY, 50, 50);
 	}
 }
