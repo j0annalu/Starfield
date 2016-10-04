@@ -76,20 +76,24 @@ class OddballParticle implements Particle
 	}
 	public void show(){
 		noStroke();
-		fill(255);
+		fill(200);
 		rect((float)oX,(float)oY, 25,25);
+		fill(255);
+		quad((float)oX, (float)oY, (float)oX+25, (float)oY, (float)oX+37.5, (float)oY-12.5, (float)oX+12.5, (float)oY-12.5);
+		fill(100);
+		quad((float)oX+25, (float)oY, (float)oX+25, (float)oY+25, (float)oX+37.5, (float)oY+12.5, (float)oX+37.5, (float)oY-12.5);
 	}
 }
 class JumboParticle implements Particle
 {
 	double nSpeed, nTheta;
-	int nX,nY;
-	JumboParticle() 
-	{
+	int nX,nY; 
+
+	JumboParticle()	{
 		nX = 250;
 		nY = 250;
-		nTheta = Math.random()*2*Math.PI;
-		nSpeed = Math.random()*10;
+		nTheta = Math.random()*2*Math.PI+.025;
+		nSpeed = Math.random()*10+1;
 	}
 	public void move()
 	{
