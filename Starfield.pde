@@ -33,7 +33,7 @@ class NormalParticle implements Particle
 		nX = 250;
 		nY = 250;
 		nTheta = Math.random()*2*Math.PI;
-		nSpeed = Math.random()*3;
+		nSpeed = Math.random()*3+2;
 	}
 	public void move()
 	{
@@ -43,6 +43,7 @@ class NormalParticle implements Particle
 			nX = 250;
 			nY = 250;
 		}
+		nTheta = nTheta + .025;
 	}
 		
 		
@@ -72,7 +73,7 @@ class OddballParticle implements Particle
 	public void move(){
 		oX = oX + Math.cos(oTheta)*oSpeed;
 		oY = oY + Math.sin(oTheta)*oSpeed;
-		oTheta = oTheta + .025;
+		oTheta = oTheta - .025;
 	}
 	public void show(){
 		noStroke();
@@ -92,7 +93,7 @@ class JumboParticle implements Particle
 	JumboParticle()	{
 		nX = 250;
 		nY = 250;
-		nTheta = Math.random()*2*Math.PI+.025;
+		nTheta = Math.random()*2*Math.PI;
 		nSpeed = Math.random()*10+1;
 	}
 	public void move()
@@ -103,6 +104,7 @@ class JumboParticle implements Particle
 			nX = 250;
 			nY = 250;
 		}
+		nTheta = nTheta + .025;
 	}
 		
 		
