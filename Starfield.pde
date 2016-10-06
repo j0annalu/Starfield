@@ -17,9 +17,9 @@ void draw()
 	background(0);
 	for (int i = 0; i < particles.length; i++)
 	{
-		r = (int)(Math.random()*100);
-		g = (int)(Math.random()*150);
-		b = (int)(Math.random()*200);
+		r = (int)(Math.random()*255);
+		g = (int)(Math.random()*255);
+		b = (int)(Math.random()*255);
 		particles[i].show();
 		particles[i].move();
 	}
